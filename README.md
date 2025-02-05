@@ -1,85 +1,101 @@
-# Turborepo starter
+# DevOps Practice Project with Turborepo
 
-This Turborepo starter is maintained by the Turborepo core team.
+This repository is a monorepo setup using Turborepo that combines Next.js for the frontend and an Express.js WebSocket server for the backend. The primary goal of this project is to practice DevOps concepts, specifically CI/CD pipelines and AWS EC2 deployments.
 
-## Using this example
+## Project Overview
 
-Run the following command:
+This project is designed for hands-on practice with:
 
-```sh
-npx create-turbo@latest
-```
+- **CI/CD Pipelines:** Automate testing, building, and deployment.
+- **AWS EC2 Deployment:** Deploy applications to AWS EC2 instances.
+- **Containerization:** Use Docker for consistent runtime environments.
+- **Infrastructure as Code (IaC):** Manage infrastructure using tools like Terraform or CloudFormation.
 
-## What's inside?
+## Tech Stack
 
-This Turborepo includes the following packages/apps:
+- **Frontend:** Next.js
+- **Backend:** Express.js with WebSocket
+- **Build Tool:** Turborepo
+- **Package Manager:** pnpm
+- **Database:** PostgreSQL with Prisma (in the `db` package)
 
-### Apps and Packages
+## Repository Structure
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+    - apps/web: Next.js frontend
+    - apps/api: Express.js backend
+    - packages/ui: Shared UI components
+    - packages/db: Database models and queries
+    - packages/eslint-config: ESLint configuration
+    - packages/typescript-config: TypeScript configuration
+    - packages/utils: Utility functions
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+## DevOps Features
 
-### Utilities
+- CI/CD Pipeline using GitHub Actions
+- AWS EC2 Deployment
+- Docker Containerization
+- Infrastructure as Code (IaC)
 
-This Turborepo has some additional tools already setup for you:
+## Getting Started
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+### Prerequisites
 
-### Build
+- Node.js (v14+ recommended)
+- pnpm
+- Docker (optional, for containerization)
+- AWS account credentials (for deployment)
 
-To build all apps and packages, run the following command:
+### Setup Instructions
 
-```
-cd my-turborepo
-pnpm build
-```
+1. **Clone the Repository**
 
-### Develop
+   ```bash
+   git clone https://github.com/nitinkumarpals/bms.git
+   cd bms
+   ```
 
-To develop all apps and packages, run the following command:
+2. **Install Dependencies**
 
-```
-cd my-turborepo
-pnpm dev
-```
+   ```bash
+   pnpm install
+   ```
 
-### Remote Caching
+3. **Configure Environment Variables**
+   Copy the example environment file and edit as needed:
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+   ```bash
+   cp .env.example .env
+   ```
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+4. **Start Development Servers**
+   ```bash
+   pnpm dev
+   ```
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
+## CI/CD Pipeline & AWS EC2 Deployment
 
-```
-cd my-turborepo
-npx turbo login
-```
+This project is tailored for practicing real-world DevOps workflows:
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+- **CI/CD with GitHub Actions:** Automate linting, testing, and building processes.
+- **Docker Containerization:** Create Docker images for both the frontend and backend applications.
+- **AWS EC2 Deployment:** Deploy Dockerized applications on AWS EC2 instances.
+- **Infrastructure as Code (IaC):** Provision and manage AWS resources using Terraform or CloudFormation.
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+### Example CI/CD Workflow
 
-```
-npx turbo link
-```
+- **Code Quality:** Lint and run tests on every pull request.
+- **Build & Package:** Build the Next.js and Express.js applications, package them in Docker containers.
+- **Deploy:** Push Docker images to a container registry and deploy to AWS EC2 via automated scripts.
 
-## Useful Links
+## Contributing
 
-Learn more about the power of Turborepo:
+Contributions to this project are welcome. To contribute:
 
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
-# bms
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Commit your changes with clear messages.
+4. Open a pull request detailing your changes.
+
+## License
+
+This project is licensed under the MIT License.
