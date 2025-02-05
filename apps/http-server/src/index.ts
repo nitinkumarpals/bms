@@ -6,12 +6,7 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
-app.get("/status", (req, res) => {
-  res.status(200).json({
-    status: "ok",
-    message: "Hello World!",
-  });
-});
+
 
 app.post("/signup", async (req, res) => {
   const email = req.body.email;
