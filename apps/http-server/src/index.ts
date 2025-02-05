@@ -6,7 +6,9 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
-
+app.get("/hello", (req, res) => {
+  res.send("Hello World!");
+});
 app.post("/signup", async (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
