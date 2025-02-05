@@ -11,6 +11,11 @@ app.get("/health", (req, res) => {
     status: "ok"
   });
 });
+app.get("/todo",(req, res) => {
+  res.status(200).json({
+    status: "ok"
+  });
+})
 app.post("/signup", async (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
