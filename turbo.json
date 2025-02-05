@@ -17,9 +17,14 @@
       "cache": false,
       "persistent": true
     },
-    "prisma:generate": {
+    "@repo/db#build": {
+      "outputs": [
+        "prisma/client"
+      ]
+    },
+    "db:generate": {
       "dependsOn": [
-        "^prisma:generate"
+        "^db:generate"
       ]
     }
   }

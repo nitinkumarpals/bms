@@ -7,7 +7,8 @@
   "license": "ISC",
   "description": "",
   "scripts": {
-    "prisma:generate": "prisma generate"
+    "prisma:generate": "prisma generate",
+    "db:generate": "prisma generate"
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*"
