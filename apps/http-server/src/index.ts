@@ -7,6 +7,9 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
+app.get("/status", (req, res) => {
+  res.status(200).json({ status: "ok" });
+});
 
 app.post("/signup", async (req, res) => {
   const email = req.body.email;
