@@ -1,29 +1,31 @@
 name: Build On Pr
 
 on:
-    pull_request:
-        branches:
-            -main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v3
+  build:
+    runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: "postgresql://test:test@localhost:5432/testdb"
+    steps:
+      - uses: actions/checkout@v3
 
-            - name: Use Node.js
-              uses: actions/setup-node@v3
-              with:
-                node-version: "20"
-                
-            - name: Use pnpm
-              uses: pnpm/action-setup@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
 
-            - name: Install Dependencies 
-              run:  pnpm install
+      - name: Use pnpm
+        uses: pnpm/action-setup@v4
 
-            - name: Generate Prisma Client
-              run: pnpm run db:generate
+      - name: Install Dependencies
+        run: pnpm install
 
-            - name: Run Build
-              run: pnpm run build
+      - name: Generate Prisma Client
+        run: pnpm run db:generate
+
+      - name: Run Build
+        run: pnpm run build
