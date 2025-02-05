@@ -6,11 +6,6 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
-app.get("/health", (req, res) => {
-  res.status(200).json({
-    status: "ok"
-  });
-});
 app.get("/todo",(req, res) => {
   res.status(200).json({
     status: "ok"
