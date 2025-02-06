@@ -1,27 +1,32 @@
 name: Deploy on prod
 
 on:
-    push:
-        branches:
-            - production
+  push:
+    branches:
+      - production
 
 jobs:
-    deploy:
-        runs-on: ubuntu-latest
-        
-        steps:
-            - name: Checkout repository
-              uses: actions/checkout@v4
+  deploy:
+    runs-on: ubuntu-latest
 
-            - name: Deploy Over SSH
-              uses: appleboy/ssh-action@v1.0.3
-              with:
-                host: ${{ secrets.SSH_HOST }}
-                username: ubuntu
-                key: ${{ secrets.SSH_PRIVATE_KEY }}
-                script: |
-                    cd bms
-                    git pull origin production
-                    pnpm install --frozen-lockfile
-                    pnpm build
-                    pm2 restart all
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name:
+        run: |
+          echo "SSH_HOST=${{ secrets.SSH_HOST }}"
+          echo "SSH_USER=${{ secrets.SSH_USER }}"
+
+      - name: Deploy Over SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ubuntu
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd bms
+            git pull origin production
+            pnpm install --frozen-lockfile
+            pnpm build
+            pm2 restart all
