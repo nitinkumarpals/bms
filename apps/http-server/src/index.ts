@@ -6,11 +6,16 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
-app.get("/todo",(req, res) => {
+app.get("/todo", (req, res) => {
   res.status(200).json({
-    status: "ok"
+    status: "ok",
   });
-})
+});
+app.get("/health", (req, res) => {
+  res.status(200).json({
+    message: "ok health",
+  });
+});
 app.post("/signup", async (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
