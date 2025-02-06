@@ -24,6 +24,8 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             source ~/.bashrc || source ~/.profile || source ~/.bash_profile
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
             cd bms
             git pull origin production
             npm install -g pnpm
