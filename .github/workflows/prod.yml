@@ -28,8 +28,6 @@ jobs:
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
             cd bms
             git pull origin production
-            npm install -g pnpm
-            npm install -g pm2
             pnpm install --frozen-lockfile
             pnpm build
             pm2 restart all
